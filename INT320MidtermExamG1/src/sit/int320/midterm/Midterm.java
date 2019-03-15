@@ -42,9 +42,18 @@ public class Midterm {
         setA.retainAll(setB);
         return setA.toArray();
     }
+    static class StringCompareIgnoreCase implements Comparator<String>{
+
+        @Override
+        public int compare(String o1, String o2) {
+            return o1.compareToIgnoreCase(o2);
+        }
+   
+    }
     public static void main(String[] args) {
         String[] a = {"A","b","c","D"};
         String[] b = {"a","b","C","D"};
         System.out.println(Arrays.toString(arrayIntersection(a, b)));
+        System.out.println(Arrays.toString(arrayIntersection(a, b, new StringCompareIgnoreCase())));
     }
 }
