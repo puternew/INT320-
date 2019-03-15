@@ -5,7 +5,12 @@
  */
 package sit.int320.midterm;
 
+import java.lang.reflect.Array;
+import static java.lang.reflect.Array.set;
+import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class Midterm {
 
@@ -24,7 +29,22 @@ public class Midterm {
     }
 
     public static Object[] arrayIntersection(Object[] obj1, Object[] obj2, Comparator c) {
-        return null;
+        Set setA,setB;
+        if (c == null) {
+            setA = new TreeSet();
+            setB = new TreeSet();
+        } else {
+            setA = new TreeSet(c);
+            setB = new TreeSet(c);
+        }
+        setA.addAll(Arrays.asList(obj1));
+        setB.addAll(Arrays.asList(obj2));
+        setA.retainAll(setB);
+        return setA.toArray();
     }
-
+    public static void main(String[] args) {
+        String[] a = {"A","b","c","D"};
+        String[] b = {"a","b","C","D"};
+        System.out.println(Arrays.toString(arrayIntersection(a, b)));
+    }
 }
